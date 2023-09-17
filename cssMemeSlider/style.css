@@ -37,19 +37,44 @@ input {
 }
 
 .controls > label {
-    width: 20px;
-    height: 20px;
-    background: #F9DEC9;
-    border-radius: 50%;
-    margin: 5px;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
 }
 
-.controls > label:hover {
+.controls > label > div {
+    width: 20px;
+    height: 20px;
+    background: #82A0D8;
+    border-radius: 50%;
+}
+
+.controls > label > div:hover {
     cursor: pointer;
     transition: 0.8s ease;
-    box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.5), inset
-                0 0 0 3px #FFF;
+    background: #ECEE81;
 }
+
+input#r1:nth-child(1):checked ~ .container .container__content .controls label:nth-child(1) .control,
+input#r2:nth-child(2):checked ~ .container .container__content .controls label:nth-child(2) .control,
+input#r3:nth-child(3):checked ~ .container .container__content .controls label:nth-child(3) .control,
+input#r4:nth-child(4):checked ~ .container .container__content .controls label:nth-child(4) .control {
+    background: #EDB7ED;
+    box-shadow: inset 0 0 0 3px #82A0D8;
+    transition: 0.8s ease-in;
+}
+
+input#r1:nth-child(1):checked ~ .container .container__content .controls label:nth-child(1):hover .control,
+input#r2:nth-child(2):checked ~ .container .container__content .controls label:nth-child(2):hover .control,
+input#r3:nth-child(3):checked ~ .container .container__content .controls label:nth-child(3):hover .control,
+input#r4:nth-child(4):checked ~ .container .container__content .controls label:nth-child(4):hover .control {
+    background: #EDB7ED;
+    box-shadow: inset 0 0 0 3px #ECEE81;
+}
+
 
 .container__content {
     width: 100%;
@@ -59,10 +84,11 @@ input {
 
 .content {
     display: flex;
+    align-items: center;
 }
 
 .container__content .content .text {
-    flex: 1 0 120%;
+    flex: 1 0 150%;
     font-size: 25px;
     transition: 0.2s ease-in;
 }
@@ -97,13 +123,30 @@ input {
 }
 
 #r2:checked ~ .container .container__content .content .text:nth-child(1) {
-    margin-left: -120%;
+    margin-left: -150%;
 }
 
 #r3:checked ~ .container .container__content .content .text:nth-child(1) {
-    margin-left: -240%;
+    margin-left: -300%;
 }
 
 #r4:checked ~ .container .container__content .content .text:nth-child(1) {
-    margin-left: -360%;
+    margin-left: -450%;
+}
+
+@media all and (max-width: 1034px) {
+    .container {
+        width: 70%;
+    }
+
+    .container__content {
+        margin-top: 20px;
+        flex-direction: column-reverse;
+    }
+}
+
+@media all and (max-width: 888px) {
+    .container {
+        width: 80%;
+    }
 }
